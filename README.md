@@ -5,10 +5,10 @@ Colab TPU \
 Google Bucket (This is where the checkpoints will be stored)
 
 ## Download the tfrecord.zip file
-\ https://drive.google.com/file/d/15PlJFy4BbGag4QACZ1-gGRcEe6SLveb8/view?usp=sharing
+https://drive.google.com/file/d/15PlJFy4BbGag4QACZ1-gGRcEe6SLveb8/view?usp=sharing \
 This file contains the preprocessed data from the Ubuntu Corpus dataset. You may also preprocess it yourself with the available code files without the use of a TPU.
 
-## Setting up the Environment 
+## Setting up the Environment \
 1. Unzip the tfrecord file
    `!unzip tfrecord.zip`
 2. Identify the TPU address

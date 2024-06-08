@@ -13,7 +13,8 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
 1. Unzip the tfrecord file \
    `!unzip tfrecord.zip`
 2. Identify the TPU address \
-   `import tensorflow as tf`
+```python
+   import tensorflow as tf`
    try:
 	tpu = tf.distribute.cluster_resolver.TPUClusterResolver()  
 	print('Running on TPU ', tpu.cluster_spec().as_dict( ['worker'])
@@ -21,21 +22,24 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
 	raise BaseException('ERROR: Not connected to a TPU runtime')
 print(tpu.cluster_spec().as_dict()['worker'])`
 
-   `tf.config.experimental_connect_to_cluster(tpu)
+   tf.config.experimental_connect_to_cluster(tpu)
    tf.tpu.experimental.initialize_tpu_system(tpu)
-   tpu_strategy = tf.distribute.TPUStrategy(tpu)`
+   tpu_strategy = tf.distribute.TPUStrategy(tpu)
+```
 
-3. Connect to your Google Bucket \
-   `from google.colab import auth
+4. Connect to your Google Bucket \
+```python
+  from google.colab import auth
   auth.authenticate_user()
   project_id = 'xxxx'
   !gcloud config set project {project_id}`
 
-   `bucket_name = 'xxxx' + str(uuid.uuid1())
-   !gsutil mb gs://{bucket_name}`
+   bucket_name = 'xxxx' + str(uuid.uuid1())
+   !gsutil mb gs://{bucket_name}
+```
 
 ## Training
-To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. Ensure that your runtime type is a TPU.\
+To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. Ensure that your runtime type is a TPU. After training, you may save the model and evaluation checkpoints by exporting them from the Google Bucket.\
 ```python
 !python run_pretraining.py \
     --input_file='gs://tf_record_data_buck67f12a58-6aec-11ee-a9db-0242ac1c000c/tf_train.tfrecord' \
@@ -50,6 +54,5 @@ To begin training the model, use the code below or paste it into a shell file. B
     --num_warmup_steps=10 \
     --learning_rate=2e-5 \
     --use_tpu=True \
-    --tpu_name=grpc://10.91.24.210:8470```
-
-Be sure to save the model and evaluation checkpoints by exporting them from the Google Bucket.
+    --tpu_name=grpc://10.91.24.210:8470
+```

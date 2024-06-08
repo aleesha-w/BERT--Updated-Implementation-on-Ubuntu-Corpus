@@ -1,6 +1,6 @@
 
 # BERT- Updated Implementation on Ubuntu Corpus
-This repository contains the implementation of Google's Bidirectional Encoder Representations from Transformers (BERT). It contains faster training and evaluation times and the latest Python version (Python 3.12) may be used. 
+This repository contains the implementation of Google's Bidirectional Encoder Representations from Transformers (BERT). It contains faster training and evaluation times and the latest version of Python (Python 3.12) may be used. 
 
 ## Requirements
 Colab TPU \
@@ -11,11 +11,11 @@ https://drive.google.com/file/d/15PlJFy4BbGag4QACZ1-gGRcEe6SLveb8/view?usp=shari
 This file contains the preprocessed data from the Ubuntu Corpus dataset. You may also preprocess it yourself with the available code files without the use of a TPU.
 
 ## Setting up the Environment 
-1. Unzip the tfrecord file \
+1. Unzip the tfrecord file 
 ```python
    !unzip tfrecord.zip
 ```
-3. Identify the TPU address \
+3. Identify the TPU address 
 ```python
    import tensorflow as tf`
    try:
@@ -30,7 +30,7 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
    tpu_strategy = tf.distribute.TPUStrategy(tpu)
 ```
 
-4. Connect to your Google Bucket \
+4. Connect to your Google Bucket 
 ```python
   from google.colab import auth
   auth.authenticate_user()
@@ -42,7 +42,7 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
 ```
 
 ## Training
-To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. Ensure that your runtime type is a TPU. \
+To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. Ensure that your runtime type is a TPU. 
 ```python
 !python run_pretraining.py \
     --input_file='gs://tf_record_data_buck67f12a58-6aec-11ee-a9db-0242ac1c000c/tf_train.tfrecord' \
@@ -60,3 +60,9 @@ To begin training the model, use the code below or paste it into a shell file. B
     --tpu_name=grpc://10.91.24.210:8470
 ```
 After training, you may save the model and evaluation checkpoints by exporting them from the Google Bucket.
+
+### Acknowledgements
+[BERT GitHub Repository](https://github.com/google-research/bert)
+
+[BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (2018)](https://arxiv.org/abs/1810.04805)
+

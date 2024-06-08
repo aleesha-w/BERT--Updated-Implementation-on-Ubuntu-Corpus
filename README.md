@@ -19,11 +19,11 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
 	print('Running on TPU ', tpu.cluster_spec().as_dict( ['worker'])
    except ValueError:
 	raise BaseException('ERROR: Not connected to a TPU runtime')
-print(tpu.cluster_spec().as_dict()['worker'])
+print(tpu.cluster_spec().as_dict()['worker'])`
 
-tf.config.experimental_connect_to_cluster(tpu)
-tf.tpu.experimental.initialize_tpu_system(tpu)
-tpu_strategy = tf.distribute.TPUStrategy(tpu)`
+   `tf.config.experimental_connect_to_cluster(tpu)
+   tf.tpu.experimental.initialize_tpu_system(tpu)
+   tpu_strategy = tf.distribute.TPUStrategy(tpu)`
 
 3. Connect to your Google Bucket \
    `from google.colab import auth
@@ -35,7 +35,7 @@ tpu_strategy = tf.distribute.TPUStrategy(tpu)`
    !gsutil mb gs://{bucket_name}`
 
 ## Training
-To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. \
+To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. Ensure that your runtime type is a TPU.\
 `
 !python run_pretraining.py \
     --input_file='gs://tf_record_data_buck67f12a58-6aec-11ee-a9db-0242ac1c000c/tf_train.tfrecord' \
@@ -51,3 +51,5 @@ To begin training the model, use the code below or paste it into a shell file. B
     --learning_rate=2e-5 \
     --use_tpu=True \
     --tpu_name=grpc://10.91.24.210:8470`
+
+Be sure to save the model and evaluation checkpoints by exporting the from the Google Bucket.

@@ -36,7 +36,7 @@ print(tpu.cluster_spec().as_dict()['worker'])`
 
 ## Training
 To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. Ensure that your runtime type is a TPU.\
-```
+```python
 !python run_pretraining.py \
     --input_file='gs://tf_record_data_buck67f12a58-6aec-11ee-a9db-0242ac1c000c/tf_train.tfrecord' \
     --output_dir='gs://out_file' \

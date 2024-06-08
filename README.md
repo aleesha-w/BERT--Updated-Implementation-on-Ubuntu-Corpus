@@ -1,11 +1,11 @@
 # BERT- Updated Implementation on Ubuntu Corpus
 
 ## Requirements
-Colab TPU 
+Colab TPU \
 Google Bucket (This is where the checkpoints will be stored)
 
 ## Download the tfrecord.zip file
-https://drive.google.com/file/d/15PlJFy4BbGag4QACZ1-gGRcEe6SLveb8/view?usp=sharing
+\ https://drive.google.com/file/d/15PlJFy4BbGag4QACZ1-gGRcEe6SLveb8/view?usp=sharing
 This file contains the preprocessed data from the Ubuntu Corpus dataset. You may also preprocess it yourself with the available code files without the use of a TPU.
 
 ## Setting up the Environment 
@@ -36,7 +36,7 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
   !gsutil mb gs://{bucket_name}`
 
 ## Training
-To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory.
+To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. \
 `
 !python run_pretraining.py \
     --input_file='gs://tf_record_data_buck67f12a58-6aec-11ee-a9db-0242ac1c000c/tf_train.tfrecord' \

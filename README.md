@@ -7,8 +7,11 @@ Colab TPU \
 Google Bucket (This is where the checkpoints will be stored)
 
 ## Download the tfrecord.zip file
-https://drive.google.com/file/d/15PlJFy4BbGag4QACZ1-gGRcEe6SLveb8/view?usp=sharing \
+[tfrecord.zip](https://drive.google.com/file/d/15PlJFy4BbGag4QACZ1-gGRcEe6SLveb8/view?usp=sharing) \
 This file contains the preprocessed data from the Ubuntu Corpus dataset. You may also preprocess it yourself with the available code files without the use of a TPU.
+
+## Download the Dataset
+If you intend to go through preprocessing, you may download the dataset here: [Ubuntu Dialogue Corpus](https://drive.google.com/drive/folders/1cm1v3njWPxG5-XhEUpGH25TMncaPR7OM?usp=drive_link)
 
 ## Setting up the Environment 
 1. Unzip the tfrecord file 
@@ -59,9 +62,10 @@ To begin training the model, use the code below or paste it into a shell file. B
     --use_tpu=True \
     --tpu_name=grpc://10.91.24.210:8470
 ```
-After training, you may save the model and evaluation checkpoints by exporting them from the Google Bucket.
+After training, you may save the model and evaluation checkpoints by exporting them from the Google Bucket. \
+Evaluation metrics are always displayed after each epoch.
 
-### Acknowledgements
+## Acknowledgements
 [BERT GitHub Repository](https://github.com/google-research/bert)
 
 [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (2018)](https://arxiv.org/abs/1810.04805)

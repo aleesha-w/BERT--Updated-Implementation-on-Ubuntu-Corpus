@@ -10,9 +10,9 @@ https://drive.google.com/file/d/15PlJFy4BbGag4QACZ1-gGRcEe6SLveb8/view?usp=shari
 This file contains the preprocessed data from the Ubuntu Corpus dataset. You may also preprocess it yourself with the available code files without the use of a TPU.
 
 ## Setting up the Environment 
-1. Unzip the tfrecord file
+1. Unzip the tfrecord file \
    `!unzip tfrecord.zip`
-2. Identify the TPU address
+2. Identify the TPU address \
    `import tensorflow as tf
 	try:
 	    tpu = tf.distribute.cluster_resolver.TPUClusterResolver()  
@@ -25,8 +25,8 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
   tf.tpu.experimental.initialize_tpu_system(tpu)
   tpu_strategy = tf.distribute.TPUStrategy(tpu)`
 
-3. Connect to your Google Bucket
-  `from google.colab import auth
+3. Connect to your Google Bucket \
+   `from google.colab import auth
   auth.authenticate_user()
   project_id = 'xxxx'
   !gcloud config set project {project_id}`

@@ -1,5 +1,6 @@
 
 # BERT- Updated Implementation on Ubuntu Corpus
+This repository contains the implementation of Google's Bidirectional Encoder Representations from Transformers (BERT). It contains faster training and evaluation times and the latest Python version (Python 3.12) may be used. 
 
 ## Requirements
 Colab TPU \
@@ -11,8 +12,10 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
 
 ## Setting up the Environment 
 1. Unzip the tfrecord file \
-   `!unzip tfrecord.zip`
-2. Identify the TPU address \
+```python
+   !unzip tfrecord.zip
+```
+3. Identify the TPU address \
 ```python
    import tensorflow as tf`
    try:
@@ -20,7 +23,7 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
 	print('Running on TPU ', tpu.cluster_spec().as_dict( ['worker'])
    except ValueError:
 	raise BaseException('ERROR: Not connected to a TPU runtime')
-print(tpu.cluster_spec().as_dict()['worker'])`
+   print(tpu.cluster_spec().as_dict()['worker'])`
 
    tf.config.experimental_connect_to_cluster(tpu)
    tf.tpu.experimental.initialize_tpu_system(tpu)
@@ -34,12 +37,12 @@ print(tpu.cluster_spec().as_dict()['worker'])`
   project_id = 'xxxx'
   !gcloud config set project {project_id}`
 
-   bucket_name = 'xxxx' + str(uuid.uuid1())
-   !gsutil mb gs://{bucket_name}
+  bucket_name = 'xxxx' + str(uuid.uuid1())
+  !gsutil mb gs://{bucket_name}
 ```
 
 ## Training
-To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. Ensure that your runtime type is a TPU. After training, you may save the model and evaluation checkpoints by exporting them from the Google Bucket.\
+To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. Ensure that your runtime type is a TPU. \
 ```python
 !python run_pretraining.py \
     --input_file='gs://tf_record_data_buck67f12a58-6aec-11ee-a9db-0242ac1c000c/tf_train.tfrecord' \
@@ -56,3 +59,4 @@ To begin training the model, use the code below or paste it into a shell file. B
     --use_tpu=True \
     --tpu_name=grpc://10.91.24.210:8470
 ```
+After training, you may save the model and evaluation checkpoints by exporting them from the Google Bucket.

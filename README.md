@@ -14,16 +14,16 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
    `!unzip tfrecord.zip`
 2. Identify the TPU address \
    `import tensorflow as tf
-	try:
-	    tpu = tf.distribute.cluster_resolver.TPUClusterResolver()  
-	    print('Running on TPU ', tpu.cluster_spec().as_dict( ['worker'])
-	 except ValueError:
-		raise BaseException('ERROR: Not connected to a TPU runtime')
-    print(tpu.cluster_spec().as_dict()['worker'])
+   try:
+	tpu = tf.distribute.cluster_resolver.TPUClusterResolver()  
+	print('Running on TPU ', tpu.cluster_spec().as_dict( ['worker'])
+   except ValueError:
+	raise BaseException('ERROR: Not connected to a TPU runtime')
+print(tpu.cluster_spec().as_dict()['worker'])
 
-	 tf.config.experimental_connect_to_cluster(tpu)
-  tf.tpu.experimental.initialize_tpu_system(tpu)
-  tpu_strategy = tf.distribute.TPUStrategy(tpu)`
+tf.config.experimental_connect_to_cluster(tpu)
+tf.tpu.experimental.initialize_tpu_system(tpu)
+tpu_strategy = tf.distribute.TPUStrategy(tpu)`
 
 3. Connect to your Google Bucket \
    `from google.colab import auth
@@ -31,8 +31,8 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
   project_id = 'xxxx'
   !gcloud config set project {project_id}`
 
-`bucket_name = 'xxxx' + str(uuid.uuid1())` 
-`!gsutil mb gs://{bucket_name}`
+   `bucket_name = 'xxxx' + str(uuid.uuid1())
+   !gsutil mb gs://{bucket_name}`
 
 ## Training
 To begin training the model, use the code below or paste it into a shell file. Be sure to modify the TPU address to match the one obtained from step 2 above. You must also modify the output directory. \

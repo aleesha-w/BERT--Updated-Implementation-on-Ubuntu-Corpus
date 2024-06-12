@@ -56,14 +56,20 @@ To begin training the model, use the code below or paste it into a shell file. B
     --train_batch_size=64 \
     --max_seq_length=128 \
     --max_predictions_per_seq=20 \
-    --num_train_steps=100 \
+    --num_train_steps=10 \
     --num_warmup_steps=10 \
     --learning_rate=2e-5 \
     --use_tpu=True \
     --tpu_name=grpc://10.91.24.210:8470
 ```
 After training, you may save the model and evaluation checkpoints by exporting them from the Google Bucket. \
-Evaluation metrics are always displayed after each epoch.
+
+## Evaluation
+
+To display the metrics, simply run the line below 
+```python
+!python compute_metrics.py
+```
 
 ## Acknowledgements
 [BERT GitHub Repository](https://github.com/google-research/bert)

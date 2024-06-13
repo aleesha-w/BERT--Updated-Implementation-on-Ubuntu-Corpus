@@ -62,7 +62,7 @@ To begin training the model, use the code below or paste it into a shell file. B
     --use_tpu=True \
     --tpu_name=grpc://10.91.24.210:8470
 ```
-After training, you may save the model and evaluation checkpoints by exporting them from the Google Bucket. \
+After training, you may save the checkpoints by exporting them from the Google Bucket. 
 
 ## Evaluation
 

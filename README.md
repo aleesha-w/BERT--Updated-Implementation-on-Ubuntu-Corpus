@@ -70,7 +70,8 @@ To display the metrics, simply run the line below
 ```python
 !python compute_metrics.py
 ```
-
+If you would like to evaluate the model without training, you can use the checkpoint files. \
+[BERT Checkpoint Files](https://drive.google.com/drive/folders/1dFXT3euv_4Rmm3QPSDSgyUsTtbiLjuV9?usp=sharing)
 ## Acknowledgements
 [BERT GitHub Repository](https://github.com/google-research/bert)
 

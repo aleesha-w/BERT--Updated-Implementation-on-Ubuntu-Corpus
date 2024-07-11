@@ -14,6 +14,7 @@ This file contains the preprocessed data from the Ubuntu Corpus dataset. You may
 If you intend to go through preprocessing, you may download the dataset here: [Ubuntu Dialogue Corpus](https://drive.google.com/drive/folders/1cm1v3njWPxG5-XhEUpGH25TMncaPR7OM?usp=drive_link)
 
 ## Setting up the Environment 
+This model is compaible with python 3.10
 1. Unzip the tfrecord file 
 ```python
    !unzip tfrecord.zip
